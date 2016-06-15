@@ -1,0 +1,82 @@
+<!--
+  #%L
+  GwtMaterial
+  %%
+  Copyright (C) 2015 - 2016 GwtMaterialDesign
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:m="urn:import:gwt.material.design.client.ui"
+             xmlns:ma="urn:import:gwt.material.design.addins.client"
+             xmlns:demo="urn:import:gwt.material.design.demo.client.ui">
+    <m:MaterialPanel>
+        <m:MaterialTitle title="Usage" description="Note: Some elements are not supported for printing especially MaterialIcons for more info go to Link below. It is useful only for reporting and printing some articles and basic informations."/>
+        <m:MaterialLink target="_blank" text="http://www.cloudformatter.com/css2pdf" iconType="LINK"/>
+        <demo:PrettyPre addStyleNames="lang-xml z-depth-1">
+            &emsp;&lt;!-- Addin Import --><br/>
+            xmlns:ma="urn:import:gwt.material.design.addins.client"<br/><br/>
+            &lt;!-- Addin Usage --><br/>
+            &lt;ma:print.MaterialPrint ui:field="btnPrint" text="Print" iconType="PRINT" type="RAISED"/>
+        </demo:PrettyPre>
+
+        <m:MaterialTitle title="Basic" description="You can print any Material Widget easily." />
+        <m:MaterialTitle ui:field="title" title="I love Material Design" description="This is great, I can be printed" />
+        <ma:print.MaterialPrint ui:field="btnPrint" text="Print" iconType="PRINT" type="RAISED"/>
+        <demo:PrettyPre addStyleNames="lang-xml z-depth-1">
+            &emsp;&lt;-- This Widget will be printed --><br/>
+            &lt;m:MaterialTitle ui:field="title" title="I love Material Design" description="This is great, I can be printed" /><br/>
+            &lt;-- This is the Print component we will use --><br/>
+            &lt;ma:print.MaterialPrint ui:field="btnPrint" text="Print" iconType="PRINT" type="RAISED"/><br/>
+        </demo:PrettyPre>
+        <demo:PrettyPre addStyleNames="lang-java z-depth-1">
+            &emsp;@UiHandler("btnPrint")<br/>
+            void onPrint(ClickEvent e) {<br/>
+            &emsp;btnPrint.print(title);<br/>
+            }
+        </demo:PrettyPre>
+
+        <m:MaterialTitle title="Image Support" description="Any image can be supported with Print component" />
+        <m:MaterialImage ui:field="img" url="http://netdna.webdesignerdepot.com/uploads/2015/07/featured_mdl.jpg" />
+        <ma:print.MaterialPrint ui:field="btnImgPrint" text="Print Image" />
+
+        <m:MaterialTitle title="Width and Margin" description="Customize the printed width and margin easily"/>
+        <m:MaterialImage ui:field="advancePrint" width="50px" height="50px" url="https://s3.amazonaws.com/uifaces/faces/twitter/stevedesigner/128.jpg" />
+        <ma:print.MaterialPrint ui:field="btnPrintAdvance" pageWidth="50" pageHeight="50" pageMargin="0.2" iconType="PRINT" type="FLOATING" />
+
+
+        <m:MaterialTitle title="Parameters" description="Here are the lists of params to be set on MaterialPrint" />
+        <g:HTMLPanel>
+            <blockquote>
+                <p><b>pageWidth</b> - Printed Media Page Width in inches (Default 8.5)</p>
+                <p><b>pageHeight</b> - Printed Media Page Height in inches (Default 11)</p>
+                <p><b>pageMargin</b> - Printed Media Page Margin Dimensions (short-hand)</p>
+                <p><b>pageMarginTop</b> - Printed Media Page Margin Top Dimension</p>
+                <p><b>pageMarginRight</b> - Printed Media Page Margin Right Dimension</p>
+                <p><b>pageMarginBottom</b> - Printed Media Page Margin Bottom Dimension</p>
+                <p><b>pageMarginLeft</b> - Printed Media Page Margin Left Dimension</p>
+                <p><b>pageMediaResource</b> - A fully qualified URL to your own stylesheet</p>
+                <p><b>namespaces</b> - an array of namespace strings to be added to the document. You need to do this if you are using any specialized library that would add namespaces to attributes. These are for the most part ignored at the backend transformation, but it would be an error if not including them.</p>
+                <p><b>cssStyle</b> - CSS styles to place directly on the container element (to override computed styles) as an array of objects whose key/value is the camel case CSS style name and a string value</p>
+                <p><b>foStyle</b> - FO styles to place directly on the container element (to override cssStyles during XSL-FO rendering) as an array of objects whose key/value is the camel case CSS style name and a string value</p>
+                <p><b>render</b> - options to control the result of the rendering</p>
+                <p><b>filename</b> - [default 'document'] Optionally used to name the downloaded file, the server will add the appropriate extension based on the mimetype of the requested document</p>
+                <p><b>mimeType</b> - [default 'application/pdf'] Optionally used control the formatter to create the type of result</p>
+                <p><b>resolution</b> - [default '120'] Resolution for image output (applies to image mimetypes image/png, image/jpg and image/gif)</p>
+            </blockquote>
+        </g:HTMLPanel>
+    </m:MaterialPanel>
+</ui:UiBinder>
